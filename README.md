@@ -54,7 +54,7 @@ Use **spaces only**, with **2 spaces** per indentation level. Never mix tabs and
 <a name="maximum_line_length"/>
 ### Maximum Line Length
 
-Limit all lines to a maximum of 79 characters.
+We do not require a fixed Maximum Line Length
 
 <a name="blank_lines"/>
 ### Blank Lines
@@ -327,23 +327,10 @@ Prefer single quoted strings (`''`) instead of double quoted (`""`) strings, unl
 <a name="conditionals"/>
 ## Conditionals
 
-Favor `unless` over `if` for negative conditions.
+Never use `unless` instead `if` for negative conditions.
 
 Instead of using `unless...else`, use `if...else`:
 
-```coffeescript
-  # Yes
-  if true
-    ...
-  else
-    ...
-
-  # No
-  unless false
-    ...
-  else
-    ...
-```
 
 Multi-line if/else clauses should use indentation:
 
@@ -409,7 +396,7 @@ Write the annotation on the line immediately above the code that the annotation 
 The annotation keyword should be followed by a colon and a space, and a descriptive note.
 
 ```coffeescript
-  # FIXME: The client's current state should *not* affect payload processing.
+  # TODO: The client's current state should *not* affect payload processing.
   resetClientState()
   processPayload()
 ```
@@ -424,11 +411,7 @@ If multiple lines are required by the description, indent subsequent lines with 
 
 Annotation types:
 
-- `TODO`: describe missing functionality that should be added at a later date
-- `FIXME`: describe broken code that must be fixed
-- `OPTIMIZE`: describe code that is inefficient and may become a bottleneck
-- `HACK`: describe the use of a questionable (or ingenious) coding practice
-- `REVIEW`: describe code that should be reviewed to confirm implementation
+- `TODO`: describe missing functionality that should be added at a later date. TODO can be optionally named: `TODO (lei): ...`
 
 If a custom annotation is required, the annotation should be documented in the project's README.
 
@@ -445,13 +428,6 @@ If a custom annotation is required, the annotation should be documented in the p
 
 `not` is preferred over `!`.
 
-`or=` should be used when possible:
-
-```coffeescript
-temp or= {} # Yes
-temp = temp || {} # No
-```
-
 Prefer shorthand notation (`::`) for accessing an object's prototype:
 
 ```coffeescript
@@ -464,13 +440,6 @@ Prefer `@property` over `this.property`.
 ```coffeescript
 return @property # Yes
 return this.property # No
-```
-
-However, avoid the use of **standalone** `@`:
-
-```coffeescript
-return this # Yes
-return @ # No
 ```
 
 Avoid `return` where not required, unless the explicit return increases clarity.
